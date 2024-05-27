@@ -1,18 +1,15 @@
 from fastapi import APIRouter, HTTPException
-from models.models import Producto
+from models.models import *
 import oracledb
 import base64
 
 #dsn: tienen que buscar el archivo tnsnames, buscar SERVICE_NAME:
-try:
-    cone = oracledb.connect(user="ferremas",
-                            password="ferremas",
-                            host="localhost",
-                            port=1521,
-                            service_name="xe")
-except oracledb.DatabaseError as e:
-    print("There was a problem connecting to the database: ", e)
-    cone = None
+
+cone = oracledb.connect(user="ferremas",
+                        password="ferremas",
+                        host="localhost",
+                        port=1521,
+                        service_name="orcl")
 
 router = APIRouter()
 
